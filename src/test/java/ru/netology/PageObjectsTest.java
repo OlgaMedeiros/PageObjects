@@ -26,20 +26,41 @@ public class PageObjectsTest {
     @DisplayName("Should successfully login with active registered user")
         //метод без Page Objects
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
-        $("[data-test-id = login] input").setValue("Vasya");
+        $("[data-test-id = login] input").setValue("vasya");
         $("[data-test-id = password] input").setValue("qwerty123");
         $(".button").click();
-    }
 
-    @Test
-    @DisplayName("Should successfully login with Page Objects")
-        // Запакуем предыдущий код в Page Objects
-    void shouldSuccessfulLoginPage1() {
-        var loginPage = new LoginPage1();
-        var authInfo  = DataHelper.getAuthInfo();
-        var verificationPage = loginPage.validLogin(authInfo);
-        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        //попадаем во второе окно для подтверждения пароля через смс
+        $("[data-test-id = code] input").setValue("12345");
+        $("[data-test-id = action-verify]").click();
+
+        //попадаем в окно со списком карт и нажимаем пополнить
+        $("[data-test-id = action-deposit]").click();
+
+        //переходим на страницу перевода со счета
+        $("[data-test-id = amount] input").setValue("200");
+        $("[data-test-id = from] input").setValue("5559 0000 0000 0001");
+        $("[data-test-id = action-transfer").click();
 
 
+
+
+
+
+
+
+
+
+//    @Test
+//    @DisplayName("Should successfully login with Page Objects")
+//        // Запакуем предыдущий код в Page Objects
+//    void shouldSuccessfulLoginPage1() {
+//        var loginPage = new LoginPage1();
+//        var authInfo  = DataHelper.getAuthInfo();
+//        var verificationPage = loginPage.validLogin(authInfo);
+//        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
     }
 }
+
+
+
