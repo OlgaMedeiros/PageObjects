@@ -76,7 +76,7 @@ public class PageObjectsTest {
 
         var transferMoneyPage = dashboardPage.secondCardButton();
         var infoCard = DataHelper.getFirstCardNumber();
-        String sum = "20000";
+        String sum = "50000";
         transferMoneyPage.transferForm(sum, infoCard);
 
     }

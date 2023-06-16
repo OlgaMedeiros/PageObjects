@@ -31,7 +31,7 @@ public class TransferMoneyPage {
         }
 
         public void getError() {
-            $(byText("Ошибка!")).shouldBe(visible);
+            $(byText("Ошибка!Произошла ошибка")).shouldBe(visible);
         }
 
         public DashBoardPage cancelButton() {
