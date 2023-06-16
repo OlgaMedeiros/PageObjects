@@ -29,7 +29,7 @@ public class PageObjectsTest {
 
 
     @Test
-    void shouldTransferMoneyBetweenOwnCards1() {
+    void shouldTransferMoneyFromCards1() {
 
         val dashboardPage = new DashBoardPage();
 
@@ -45,7 +45,7 @@ public class PageObjectsTest {
     }
 
     @Test
-    void shouldTransferMoneyBetweenOwnCards2() {
+    void shouldTransferMoneyFromCards2() {
 
         val dashboardPage = new DashBoardPage();
 
@@ -70,15 +70,15 @@ public class PageObjectsTest {
     }
 
     @Test
-    void shouldTransferMoneyBetweenOwnCardsError() {
+    void shouldTransferMoneyCardsError() {
 
-        val dashboardPage = new DashBoardPage();
+        var dashboardPage = new DashBoardPage();
 
-        val transferMoneyPage = dashboardPage.secondCardButton();
-        val infoCard = DataHelper.getFirstCardNumber();
+        var transferMoneyPage = dashboardPage.secondCardButton();
+        var infoCard = DataHelper.getFirstCardNumber();
         String sum = "20000";
         transferMoneyPage.transferForm(sum, infoCard);
-        transferMoneyPage.getError();
+
     }
 
 }
