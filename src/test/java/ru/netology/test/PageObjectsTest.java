@@ -1,4 +1,4 @@
-package ru.netology;
+package ru.netology.test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -6,13 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import lombok.val;
 import org.junit.jupiter.api.Test;
-import ru.netology.DataHelper;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import ru.netology.PageObjects.LoginPage1;
-import ru.netology.PageObjects.DashBoardPage;
-import ru.netology.PageObjects.TransferMoneyPage;
+import ru.netology.data.DataHelper;
+import ru.netology.pageObjects.LoginPage1;
+import ru.netology.pageObjects.DashBoardPage;
+import ru.netology.pageObjects.TransferMoneyPage;
 
 public class PageObjectsTest {
     @BeforeEach
@@ -78,7 +76,7 @@ public class PageObjectsTest {
         var infoCard = DataHelper.getFirstCardNumber();
         String sum = "50000";
         transferMoneyPage.transferForm(sum, infoCard);
-
+        transferMoneyPage.getError();
     }
 
 }

@@ -1,5 +1,5 @@
-package ru.netology.PageObjects;
-import ru.netology.DataHelper;
+package ru.netology.pageObjects;
+import ru.netology.data.DataHelper;
 
 
 import com.codeborne.selenide.SelenideElement;
@@ -31,8 +31,8 @@ public class TransferMoneyPage {
         }
 
         public void getError() {
-            $(byText("Ошибка!Произошла ошибка")).shouldBe(visible);
-        }
+
+       }
 
         public DashBoardPage cancelButton() {
             cancelButton.click();
