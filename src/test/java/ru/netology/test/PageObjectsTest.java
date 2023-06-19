@@ -8,9 +8,8 @@ import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import ru.netology.data.DataHelper;
-import ru.netology.pageObjects.LoginPage1;
-import ru.netology.pageObjects.DashBoardPage;
-import ru.netology.pageObjects.TransferMoneyPage;
+import ru.netology.pageobjects.LoginPage1;
+import ru.netology.pageobjects.DashBoardPage;
 
 public class PageObjectsTest {
     @BeforeEach

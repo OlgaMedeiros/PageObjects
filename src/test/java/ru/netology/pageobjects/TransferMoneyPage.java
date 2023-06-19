@@ -1,4 +1,4 @@
-package ru.netology.pageObjects;
+package ru.netology.pageobjects;
 import ru.netology.data.DataHelper;
 
 
@@ -31,7 +31,7 @@ public class TransferMoneyPage {
         }
 
         public void getError() {
-
+            $(byText("Ошибка!"));
        }
 
         public DashBoardPage cancelButton() {

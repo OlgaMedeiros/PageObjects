@@ -1,4 +1,4 @@
-package ru.netology.pageObjects;
+package ru.netology.pageobjects;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -27,7 +27,6 @@ public class DashBoardPage {
 
     }
 
-
     public TransferMoneyPage secondCardButton() {
         secondCardButton.click();
         return new TransferMoneyPage();
@@ -35,25 +34,38 @@ public class DashBoardPage {
 
     public int getFirstCardBalance() {
         var text = firstCard.text();
-        return extractBalanceFirstCard(text);
+        return extractBalanceCard(text);
     }
 
-    private int extractBalanceFirstCard(String text) {   //первая карта
+    public int getCardBalance(SelenideElement card) {
+        var text = card.text();
+        return extractBalanceCard(text);
+    }
+
+
+    private int extractBalance(String text) {
         var start = text.indexOf(balanceStart);
         var finish = text.indexOf(balanceFinish);
         var value = text.substring(start + balanceStart.length(), finish);
         return Integer.parseInt(value);
     }
+
+    public int getBalance() {
+        var text = firstCard.text();
+        return extractBalanceCard(text);
+    }
+
+
+    private int extractBalanceCard(String text) {
+        var start = text.indexOf(balanceStart);
+        var finish = text.indexOf(balanceFinish);
+        var value = text.substring(start + balanceStart.length(), finish);
+        return Integer.parseInt(value);
+    }
+
     public int getSecondCardBalance() {
         var text = secondCard.text();
-        return extractBalanceSecondCard(text);
-    }
-
-    private int extractBalanceSecondCard(String text) {      // вторая карта
-        var start = text.indexOf(balanceStart);
-        var finish = text.indexOf(balanceFinish);
-        var value = text.substring(start + balanceStart.length(), finish);
-        return Integer.parseInt(value);
+        return extractBalanceCard(text);
     }
 
 }
