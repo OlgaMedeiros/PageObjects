@@ -32,6 +32,7 @@ public class DashBoardPage {
         return new TransferMoneyPage();
     }
 
+
     public int getFirstCardBalance() {
         var text = firstCard.text();
         return extractBalanceCard(text);
@@ -42,13 +43,6 @@ public class DashBoardPage {
         return extractBalanceCard(text);
     }
 
-
-    private int extractBalance(String text) {
-        var start = text.indexOf(balanceStart);
-        var finish = text.indexOf(balanceFinish);
-        var value = text.substring(start + balanceStart.length(), finish);
-        return Integer.parseInt(value);
-    }
 
     public int getBalance() {
         var text = firstCard.text();

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import ru.netology.data.DataHelper;
 import ru.netology.pageobjects.LoginPage1;
 import ru.netology.pageobjects.DashBoardPage;
+import ru.netology.pageobjects.TransferMoneyPage;
 
 public class PageObjectsTest {
     @BeforeEach
@@ -26,7 +27,7 @@ public class PageObjectsTest {
 
 
     @Test
-    void shouldTransferMoneyFromCards1() {
+    void shouldTransferMoneyFromCards2() {
 
         val dashboardPage = new DashBoardPage();
 
@@ -42,7 +43,7 @@ public class PageObjectsTest {
     }
 
     @Test
-    void shouldTransferMoneyFromCards2() {
+    void shouldTransferMoneyFromCards1() {
 
         val dashboardPage = new DashBoardPage();
 
@@ -67,15 +68,36 @@ public class PageObjectsTest {
     }
 
     @Test
-    void shouldTransferMoneyCardsError() {
+    void shouldTransferMoneyFromCards1OverLimit() {
 
-        var dashboardPage = new DashBoardPage();
+        val dashboardPage = new DashBoardPage();
 
-        var transferMoneyPage = dashboardPage.secondCardButton();
-        var infoCard = DataHelper.getFirstCardNumber();
+        int balanceFirstCard = dashboardPage.getFirstCardBalance();
+        int balanceSecondCard = dashboardPage.getSecondCardBalance();
+        val transferMoneyPage = dashboardPage.secondCardButton();
+        val infoCard = DataHelper.getFirstCardNumber();
         String sum = "50000";
         transferMoneyPage.transferForm(sum, infoCard);
-        transferMoneyPage.getError();
+
+        assertEquals(balanceFirstCard - Integer.parseInt(sum), dashboardPage.getFirstCardBalance());
+        assertEquals(balanceSecondCard + Integer.parseInt(sum), dashboardPage.getSecondCardBalance());
+    }
+
+    @Test
+    void shouldTransferMoneyFromCards2OverLimit() {
+
+        val dashboardPage = new DashBoardPage();
+
+        int balanceFirstCard = dashboardPage.getFirstCardBalance();
+        int balanceSecondCard = dashboardPage.getSecondCardBalance();
+        val transferMoneyPage = dashboardPage.secondCardButton();
+        val infoCard = DataHelper.getFirstCardNumber();
+        String sum = "60000";
+        transferMoneyPage.transferForm(sum, infoCard);
+
+        assertEquals(balanceFirstCard - Integer.parseInt(sum), dashboardPage.getFirstCardBalance());
+        assertEquals(balanceSecondCard + Integer.parseInt(sum), dashboardPage.getSecondCardBalance());
     }
 
 }
+
